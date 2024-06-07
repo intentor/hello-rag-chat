@@ -24,15 +24,17 @@ ollama serve
 make serve
 ```
 
-In a new terminal, run the command below to setup the Python virtual envrinment:
+In a new terminal, run the command below to setup the Python virtual envrinment and dependencies:
 
 ```bash
-make venv
+make setup
 ```
 
 ## Running the app
 
 ```bash
+make
+# or
 make run
 ```
 
