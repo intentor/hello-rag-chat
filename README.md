@@ -1,8 +1,10 @@
-# Hello RAG Chatbot
+# Hello RAG Chat
 
 This application retrieves the contents of a webpage to use it as context when asking questions to a chatbot using Llama-3 LLM.
 
 It was created to demonstrate RAG (Retrieval Augmented Generation), a technique to provide context to an LLM so it can be more accurate when generating results.
+
+Inspired by the article [How to Build a Local RAG App with Llama 3 (Complete Guide)](<http://anakin.ai/blog/llama-3-rag-locally/>).
 
 ## Setup
 
