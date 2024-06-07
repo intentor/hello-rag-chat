@@ -1,0 +1,6 @@
+streamlit
+beautifulsoup4
+ollama
+chromadb
+langchain
+langchain_community
