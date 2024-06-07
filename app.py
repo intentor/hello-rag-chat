@@ -87,11 +87,18 @@ st.caption(
 webpage_url = st.text_input(
     'Enter the URL of a webpage you want to ask questions about', type='default')
 
+log.info('Check URL')
+
 if webpage_url:
     log.info('Loading %s', webpage_url)
 
-    webpage_splits = get_splits(webpage_url)
-    retriever = ingest_context(webpage_splits)
+    # Only create the context if it's not in the session.
+    if webpage_url not in st.session_state:
+        webpage_splits = get_splits(webpage_url)
+        retriever = ingest_context(webpage_splits)
+
+        st.session_state[webpage_url] = retriever
+        log.info('Context created')
 
     st.success(f"{webpage_url} loaded.")
 
@@ -99,13 +106,18 @@ if webpage_url:
     if 'messages' not in st.session_state:
         st.session_state.messages = []
 
-    # Display chat messages from history on app rerun
+    # Display chat messages from history on app rerun.
     for message in st.session_state.messages:
         with st.chat_message(message['role']):
             st.markdown(message['content'])
 
+    log.info('Messages loaded')
+
     if question := st.chat_input('Ask any questions about the webpage'):
+        log.info('Question asked')
+
         show_message(ROLE_USER, question)
 
+        retriever = st.session_state[webpage_url]
         response = chat(question, retriever)
         show_message(ROLE_BOT, response)
