@@ -36,4 +36,4 @@ make venv
 make run
 ```
 
-The chat page will open in your browser, so you can load a webpage and start asking questions about it.
+The chat page will open in your browser. You can enter a URL to generate context for the conversation and start asking questions about it after loading.
